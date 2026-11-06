@@ -1,6 +1,6 @@
 # dsh-peak-valley-reminder
 
-给 [DeepSeek Harness](https://github.com/deepseek-ai)（DSH）用的 Web 客户端插件：在窗口顶部居中显示一个「灵动岛」，实时告诉你当前是 DeepSeek API 的**峰时**还是**谷时**、距离切换还有多久；右下角另有一张可拖动的**余额卡**。
+给 DeepSeek Harness（DSH）用的 Web 客户端插件：在窗口顶部居中显示一个「灵动岛」，实时告诉你当前是 DeepSeek API 的**峰时**还是**谷时**、距离切换还有多久；右下角另有一张可拖动的**余额卡**。
 
 深色界面里只有一个 32px 的小圆点和一圈进度环，悬停或点击才展开完整信息——不挡视线，但需要的时候一眼就能看到。
 
