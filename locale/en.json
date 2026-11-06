@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "API Peak/Off-Peak Reminder",
+    "description": "Shows DeepSeek API peak/off-peak pricing and the account balance as a centered Dynamic Island: a small dot with a progress ring when idle, expanding to full details on hover or click. Off-peak is green, peak is red, and the final hour turns yellow and blinks."
+  },
+  "valley-title": "It's Liang Wengu time!",
+  "valley-sub": "Off-peak 50% · remaining",
+  "valley-meta": "Weekdays 12–14 & after 18:00 · weekends/holidays all day",
+  "peak-title": "Heads up! It's Liang Wenfeng time!",
+  "peak-sub": "Standard rate · remaining",
+  "peak-meta": "Mon–Fri 09:00–12:00 & 14:00–18:00 Beijing time (holidays excluded)",
+  "balance-label": "Balance",
+  "balance-card-label": "Balance: ",
+  "balance-loading": "Loading…",
+  "balance-signed-out": "Sign in to view",
+  "balance-error": "Unavailable",
+  "balance-empty": "No balance",
+  "balance-topped-up": "Top-up",
+  "balance-bonus": "Bonus",
+  "tooltip": "DeepSeek API peak hours: Mon–Fri 09:00–12:00 and 14:00–18:00 Beijing time, excluding Chinese statutory holidays. All other times are off-peak (50% price)."
+}

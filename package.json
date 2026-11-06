@@ -1,0 +1,53 @@
+{
+  "name": "@local/dsh-peak-valley-reminder",
+  "version": "1.0.0",
+  "description": "Shows DeepSeek API peak/off-peak pricing and the account balance in a compact Dynamic Island.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anmoku-Yomogi/dsh-peak-valley-reminder.git"
+  },
+  "homepage": "https://github.com/Anmoku-Yomogi/dsh-peak-valley-reminder#readme",
+  "bugs": {
+    "url": "https://github.com/Anmoku-Yomogi/dsh-peak-valley-reminder/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "deepseek",
+    "peak-valley",
+    "balance"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "src/*.js",
+    "build.mjs",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ]
+    }
+  }
+}

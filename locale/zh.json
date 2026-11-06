@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "API 峰谷时段提醒",
+    "description": "在界面顶部中央以灵动岛样式显示 DeepSeek API 的峰时、谷时和账户余额：未选中时只显示带进度环的小圆点，悬停或点击后展开完整信息；谷时绿色，峰时红色，临近切换时黄色闪烁。"
+  },
+  "valley-title": "现在是梁文谷时间！",
+  "valley-sub": "谷时 5 折 · 剩余",
+  "valley-meta": "工作日 12–14 点、18 点后 · 周末/节假日全天",
+  "peak-title": "注意！现在是梁文峰时间！",
+  "peak-sub": "峰时标准价 · 剩余",
+  "peak-meta": "周一至周五 09:00–12:00、14:00–18:00（法定节假日除外）",
+  "balance-label": "账户余额",
+  "balance-card-label": "余额：",
+  "balance-loading": "加载中…",
+  "balance-signed-out": "登录后查看",
+  "balance-error": "暂不可用",
+  "balance-empty": "暂无余额",
+  "balance-topped-up": "充值",
+  "balance-bonus": "赠送",
+  "tooltip": "DeepSeek API 峰时：北京时间周一至周五（法定节假日除外）09:00–12:00、14:00–18:00；其余时间为谷时（5 折）。"
+}
