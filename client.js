@@ -161,12 +161,13 @@ function createBalanceCard({ React, h, createPortal, balanceText, balanceGlow, b
 
       React.useEffect(() => {
         let alive = true;
+        const interval = running ? 10000 : 30000;
         const load = () => {
           if (typeof readBalance !== 'function') {
             if (alive) setBalance({ status: 'error' });
             return;
           }
-          readBalance()
+          readBalance(interval)
             .then((next) => {
               if (alive) setBalance(next);
             })
@@ -175,12 +176,12 @@ function createBalanceCard({ React, h, createPortal, balanceText, balanceGlow, b
             });
         };
         load();
-        const id = window.setInterval(load, 60000);
+        const id = window.setInterval(load, interval);
         return () => {
           alive = false;
           window.clearInterval(id);
         };
-      }, [readBalance]);
+      }, [readBalance, running]);
 
       React.useEffect(() => {
         const node = cardRef.current;
@@ -1244,8 +1245,8 @@ window.__ModuleLoader__.load({
         'peak-valley: dictionaries',
       );
 
-      const readBalance = async () => {
-        if (balanceCache !== null && Date.now() - balanceCacheAt < 30000) return balanceCache;
+      const readBalance = async (maxAge = 30000) => {
+        if (balanceCache !== null && Date.now() - balanceCacheAt < maxAge) return balanceCache;
         try {
           const remote = ctx.remote?.account;
           if (!remote) return { status: 'error' };

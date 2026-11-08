@@ -159,12 +159,13 @@ export function createBalanceCard({ React, h, createPortal, balanceText, balance
 
       React.useEffect(() => {
         let alive = true;
+        const interval = running ? 10000 : 30000;
         const load = () => {
           if (typeof readBalance !== 'function') {
             if (alive) setBalance({ status: 'error' });
             return;
           }
-          readBalance()
+          readBalance(interval)
             .then((next) => {
               if (alive) setBalance(next);
             })
@@ -173,12 +174,12 @@ export function createBalanceCard({ React, h, createPortal, balanceText, balance
             });
         };
         load();
-        const id = window.setInterval(load, 60000);
+        const id = window.setInterval(load, interval);
         return () => {
           alive = false;
           window.clearInterval(id);
         };
-      }, [readBalance]);
+      }, [readBalance, running]);
 
       React.useEffect(() => {
         const node = cardRef.current;

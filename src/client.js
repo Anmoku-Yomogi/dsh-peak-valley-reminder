@@ -941,8 +941,8 @@ window.__ModuleLoader__.load({
         'peak-valley: dictionaries',
       );
 
-      const readBalance = async () => {
-        if (balanceCache !== null && Date.now() - balanceCacheAt < 30000) return balanceCache;
+      const readBalance = async (maxAge = 30000) => {
+        if (balanceCache !== null && Date.now() - balanceCacheAt < maxAge) return balanceCache;
         try {
           const remote = ctx.remote?.account;
           if (!remote) return { status: 'error' };
