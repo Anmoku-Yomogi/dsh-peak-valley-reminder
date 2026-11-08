@@ -35,6 +35,8 @@ window.__ModuleLoader__.load({
 
     const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const RING_SIZE = 32;
+    /** Distance from the very top of the window, including the native titlebar band. */
+    const TOP_INSET = 4;
     const RING_CENTER = RING_SIZE / 2;
     const RING_RADIUS = 14.3;
     const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
@@ -308,6 +310,15 @@ window.__ModuleLoader__.load({
 .dsh-pv-island:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .55);
+}
+/* The island sits inside the native window drag band: opt every node of it out
+   of the drag region so hover, click and pointermove still reach the page. */
+.dsh-pv-island,
+.dsh-pv-island *,
+.dsh-pv-island *::before,
+.dsh-pv-island *::after {
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
 }
 .dsh-pv-island[data-open="true"] {
   width: 500px;
@@ -701,11 +712,6 @@ window.__ModuleLoader__.load({
       const [hovered, setHovered] = React.useState(false);
       const [pinned, setPinned] = React.useState(false);
       const [balance, setBalance] = React.useState({ status: 'idle' });
-      const [topOffset, setTopOffset] = React.useState(() => {
-        const raw = titlebarHeight();
-        if (raw > 0) return raw + 10;
-        return 'dshDesktop' in globalThis ? 52 : 8;
-      });
       const rootRef = React.useRef(null);
       const pinnedRef = React.useRef(false);
       const suppressRef = React.useRef(false);
@@ -714,16 +720,6 @@ window.__ModuleLoader__.load({
       React.useEffect(() => {
         pinnedRef.current = pinned;
       }, [pinned]);
-
-      React.useEffect(() => {
-        const update = () => {
-          const raw = titlebarHeight();
-          setTopOffset(raw > 0 ? raw + 10 : 'dshDesktop' in globalThis ? 52 : 8);
-        };
-        update();
-        window.addEventListener('resize', update);
-        return () => window.removeEventListener('resize', update);
-      }, []);
 
       React.useEffect(() => {
         if (!open || typeof readBalance !== 'function') return undefined;
@@ -825,7 +821,7 @@ window.__ModuleLoader__.load({
         {
           ref: rootRef,
           className: 'dsh-pv-island',
-          style: { top: `${topOffset}px` },
+          style: { top: `${TOP_INSET}px` },
           'data-state': valley ? 'valley' : 'peak',
           'data-phase': phase,
           'data-open': open ? 'true' : 'false',
